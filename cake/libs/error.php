@@ -92,7 +92,9 @@ class ErrorHandler extends Object {
 			$this->controller =& new Controller();
 			$this->controller->viewPath = 'errors';
 		}
-		$options = array('escape' => false);
+		
+		// Mglueck: Added ENCODE = false to prevent HTML encoding by default in Error messages
+		$options = array('encode' => false, 'escape' => false);
 		$messages = Sanitize::clean($messages, $options);
 
 		if (!isset($messages[0])) {
